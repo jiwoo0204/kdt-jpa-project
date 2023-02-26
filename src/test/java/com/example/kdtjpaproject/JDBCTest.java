@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 @Slf4j
@@ -29,6 +30,17 @@ public class JDBCTest {
             statement.executeUpdate(DROP_TABLE_SQL);
             statement.executeUpdate(CREATE_TABLE_SQL);
             log.info("CREATED TABLE");
+
+            statement.executeUpdate(INSERT_SQL);
+            log.info("INSERTED CUSTOMER INFORMATION");
+
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM customers WHERE id = 1");
+
+            //USING
+            while (resultSet.next()){
+                String fullName = resultSet.getString("first_name") + " " + resultSet.getString("last_name");
+                log.info("CUSTOMER FULL_NAME : {}", fullName);
+            }
 
             statement.close();
             connection.close();
