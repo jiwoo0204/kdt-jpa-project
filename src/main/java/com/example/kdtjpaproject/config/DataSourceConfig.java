@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-public class DataSourceConfig2 {
+public class DataSourceConfig {
 
     @Bean
     public DataSource dataSource() {

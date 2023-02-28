@@ -1,16 +1,17 @@
 package com.example.kdtjpaproject.domain.order;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "orders")
+@Getter
+@Setter
 public class Order {
+
     @Id
     @Column(name = "id")
     private String uuid;

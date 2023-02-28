@@ -1,21 +1,19 @@
 package com.example.kdtjpaproject.domain.order;
 
 import com.example.kdtjpaproject.KdtJpaProjectApplication;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static com.example.kdtjpaproject.domain.order.OrderStatus.OPENED;
 
 @Slf4j
-@SpringBootTest
+@SpringBootTest(classes = KdtJpaProjectApplication.class)
 public class OrderPersistenceTest {
 
     @Autowired

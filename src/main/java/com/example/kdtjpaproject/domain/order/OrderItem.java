@@ -1,14 +1,16 @@
 package com.example.kdtjpaproject.domain.order;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "order_item")
+@Getter
+@Setter
 public class OrderItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
