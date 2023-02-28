@@ -15,13 +15,13 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-public class DataSourceConfig2 {
+public class DataSourceConfig {
 
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:~/test");
+        dataSource.setUrl("jdbc:h2:~/order-guppy");
         dataSource.setUsername("sa");
         dataSource.setPassword("");
 
