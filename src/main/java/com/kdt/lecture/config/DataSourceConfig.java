@@ -1,8 +1,9 @@
-package com.example.kdtjpaproject.config;
+package com.kdt.lecture.config;
 
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -21,19 +22,19 @@ public class DataSourceConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:~/order-guppy");
+        dataSource.setUrl("jdbc:h2:~/order");
         dataSource.setUsername("sa");
         dataSource.setPassword("");
 
         return dataSource;
     }
 
-//    /**
-//     * @JpaVendorAdapter : JPA는 여러 구현체가 존재하기 때문에 구현체별 설정을 지원하기 위한 클래스이다.
-//     * Hibernate를 사용하기 때문에 HibernateJpaVendorAdapter를 사용한다.
-//     * @param jpaProperties
-//     * @return
-//     */
+    /**
+     * @JpaVendorAdapter : JPA는 여러 구현체가 존재하기 때문에 구현체별 설정을 지원하기 위한 클래스이다.
+     * Hibernate를 사용하기 때문에 HibernateJpaVendorAdapter를 사용한다.
+     * @param jpaProperties
+     * @return
+     */
     @Bean
     public JpaVendorAdapter jpaVendorAdapter(JpaProperties jpaProperties) {
         AbstractJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
@@ -43,14 +44,14 @@ public class DataSourceConfig {
         return adapter;
     }
 
-//    /**
-//     * @LocalContainerEntityManagerFactoryBean :
-//     * EntityManagerFactoryBean을 Spring에서 사용하기 위한 클래스
-//     * @param dataSource
-//     * @param jpaVendorAdapter
-//     * @param jpaProperties
-//     * @return
-//     */
+    /**
+     * @LocalContainerEntityManagerFactoryBean :
+     * EntityManagerFactoryBean을 Spring에서 사용하기 위한 클래스
+     * @param dataSource
+     * @param jpaVendorAdapter
+     * @param jpaProperties
+     * @return
+     */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter,
                                                                        JpaProperties jpaProperties) {

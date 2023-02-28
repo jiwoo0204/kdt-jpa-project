@@ -1,10 +1,10 @@
-package com.example.kdtjpaproject;
+package com.kdt.lecture;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = KdtJpaProjectApplication.class)
-class KdtJpaProjectApplicationTests {
+@SpringBootTest
+class KdtLectureJpaApplicationTests {
 
     @Test
     void contextLoads() {
