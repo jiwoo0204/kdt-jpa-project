@@ -18,6 +18,7 @@ public class Item {
     private int price;
     private int stockQuantity;
 
+    // item : order_item = 1 : N
     @ManyToOne
     @JoinColumn(name = "order_item_id", referencedColumnName = "id")
     private OrderItem orderItem;
