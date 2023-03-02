@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -24,8 +23,9 @@ public class OrderItem {
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
 
-    @OneToMany(mappedBy = "orderItem")
-    private List<Item> items;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "item_id", referencedColumnName = "id")
+    private Item items;
 
     public void setOrder(Order order) {
         if (Objects.nonNull(this.order)) {
@@ -36,8 +36,13 @@ public class OrderItem {
         order.getOrderItems().add(this);
     }
 
-    public void addItem(Item item) {
-        item.setOrderItem(this);
+    public void setItems(Item items) {
+        if (Objects.nonNull(this.items)) {
+            this.items.getOrderItems().remove(this);
+        }
+
+        this.items = items;
+        items.getOrderItems().add(this);
     }
 
 }
