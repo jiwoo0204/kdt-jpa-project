@@ -25,10 +25,10 @@ public class OrderRepositoryTest {
     @BeforeEach
     void setUp () {
         Member member = new Member();
-        member.setName("강홍구");
-        member.setAge(33);
-        member.setNickName("guppy.kang");
-        member.setAddress("서울시 동작구만 움직이면 쏜다.");
+        member.setName("지우");
+        member.setAge(23);
+        member.setNickName("jiwoo");
+        member.setAddress("대전광역시");
         member.setDescription("");
 
         Order order = new Order();
