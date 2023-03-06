@@ -11,5 +11,5 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("CAR")
 public class Car extends Item{
-    private long power;
+    private int power;
 }

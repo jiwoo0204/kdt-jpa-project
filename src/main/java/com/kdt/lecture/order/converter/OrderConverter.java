@@ -114,10 +114,7 @@ public class OrderConverter {
                 .id(orderItem.getId())
                 .price(orderItem.getPrice())
                 .quantity(orderItem.getQuantity())
-                .itemDtos(orderItem.getItems().stream()
-                        .map(this::convertItemDto)
-                        .collect(Collectors.toList())
-                )
+                .itemDtos(this.convertItemDto(orderItem.getItems()))
                 .build();
     }
 
