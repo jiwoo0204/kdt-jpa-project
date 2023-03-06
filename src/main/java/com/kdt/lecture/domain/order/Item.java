@@ -11,7 +11,7 @@ import java.util.List;
 @Table(name = "item")
 @Getter
 @Setter
-public class Item {
+public abstract class Item extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
