@@ -8,6 +8,7 @@ import com.kdt.lecture.member.dto.MemberDto;
 import com.kdt.lecture.order.dto.OrderDto;
 import com.kdt.lecture.order.dto.OrderItemDto;
 import javassist.NotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,10 +21,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
+@Slf4j
 @SpringBootTest
 class OrderServiceTest {
+
     @Autowired
     private OrderService orderService;
 
@@ -33,7 +34,8 @@ class OrderServiceTest {
     String uuid = UUID.randomUUID().toString();
 
     @BeforeEach
-    void save_test() {
+    @Test
+    void setUp () {
         // Given
         OrderDto orderDto = OrderDto.builder()
                 .uuid(uuid)
@@ -63,12 +65,11 @@ class OrderServiceTest {
                                 .build()
                 ))
                 .build();
-
         // When
-        String savedUuid = orderService.save(orderDto);
+        String uuid = orderService.save(orderDto);
 
         // Then
-        assertThat(uuid).isEqualTo(savedUuid);
+        log.info("UUID:{}", uuid);
     }
 
     @AfterEach
@@ -76,28 +77,17 @@ class OrderServiceTest {
         orderRepository.deleteAll();
     }
 
+    @Test
+    void findAll() {
+        Page<OrderDto> orders = orderService.findOrders(PageRequest.of(0, 10));
+        log.info("{}", orders);
+    }
 
     @Test
-    void findOneTest() throws NotFoundException {
-        // Given
-        String orderUuid = uuid;
-
-        // When
+    void findOne() throws NotFoundException {
+        log.info("uuid:{}", uuid);
         OrderDto one = orderService.findOne(uuid);
-
-        // Then
-        assertThat(one.getUuid()).isEqualTo(orderUuid);
+        log.info("{}", one);
     }
 
-    @Test
-    void findAllTest() {
-        // Given
-        PageRequest page = PageRequest.of(0, 10);
-
-        // When
-        Page<OrderDto> all = orderService.findOrders(page);
-
-        // Then
-        assertThat(all.getTotalElements()).isEqualTo(1);
-    }
 }

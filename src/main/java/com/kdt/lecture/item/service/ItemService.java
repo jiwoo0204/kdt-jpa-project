@@ -1,9 +1,6 @@
 package com.kdt.lecture.item.service;
 
-import com.kdt.lecture.domain.order.Car;
-import com.kdt.lecture.domain.order.Food;
-import com.kdt.lecture.domain.order.Furniture;
-import com.kdt.lecture.domain.order.Item;
+import com.kdt.lecture.domain.order.*;
 import com.kdt.lecture.item.dto.ItemDto;
 import com.kdt.lecture.item.dto.ItemType;
 import javassist.NotFoundException;
