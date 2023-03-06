@@ -34,7 +34,6 @@ class OrderServiceTest {
     String uuid = UUID.randomUUID().toString();
 
     @BeforeEach
-    @Test
     void setUp () {
         // Given
         OrderDto orderDto = OrderDto.builder()
