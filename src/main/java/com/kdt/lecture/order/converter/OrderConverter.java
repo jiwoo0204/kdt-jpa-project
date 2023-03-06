@@ -47,10 +47,7 @@ public class OrderConverter {
                     OrderItem orderItem = new OrderItem();
                     orderItem.setPrice(orderItemDto.getPrice());
                     orderItem.setQuantity(orderItemDto.getQuantity());
-                    List<Item> items = orderItemDto.getItemDtos().stream()
-                            .map(this::convertItem)
-                            .collect(Collectors.toList());
-                    items.forEach(orderItem::addItem);
+                    orderItem.setItems(this.convertItem(orderItemDto.getItemDtos()));
                     return orderItem;
                 })
                 .collect(Collectors.toList());
